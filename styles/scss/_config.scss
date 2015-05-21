@@ -1,0 +1,46 @@
+// ==================================
+// Global Config variables/mixins/extends
+// ==================================
+//$background-color--container:#3F3F3F;
+
+/* Fonts
+=====================================*/
+$width-wrapper: 92%;
+
+/* Fonts
+=====================================*/
+
+
+
+/* colors
+=====================================*/
+$main-color: #0D3295;
+$secondary-color: #15A500; 
+
+//main box shadow for wrapper/footer
+@mixin boxshadow-main {
+	// -moz-box-shadow: 12px 0 15px -4px grey, -12px 0 15px -4px grey;
+	// -webkit-box-shadow: 12px 0 15px -4px grey, -12px 0 15px -4px grey;
+	// box-shadow: 12px 0 15px -4px grey, -12px 0 15px -4px grey;
+}
+
+@mixin boxshadow-steps {
+	-moz-box-shadow: 10px 10px 10px #9E9E9E;
+	-webkit-box-shadow: 10px 10px 10px #9E9E9E;
+	box-shadow: 10px 10px 10px #9E9E9E;
+}
+
+
+/* borders:
+=====================================*/
+@mixin border-radius($rad) {
+	-webkit-border-radius: $rad; 
+	-moz-border-radius: $rad; 
+	border-radius: $rad; 
+}
+
+
+
+/* pseudo class colors:
+=====================================*/
+
