@@ -1,11 +1,17 @@
 $(document).ready(function() {
 
+	//function to reload .testamonial content to get rid of bug after "remind me" exit button click
+
+	function reloadCarousel() {
+		$('.slick-next').click();
+	}
+
 	//slick carousel setup for .testamonials
 	$('.testamonials').slick({
 		dots: true,
 		autoplay: true,
 		autoplaySpeed: 8000,
-		arrows: false
+		arrows: true
 	});
 
 	//slick-nav pluggin initialization - media queries take care of hide/show
@@ -82,6 +88,19 @@ $(document).ready(function() {
 		}
 	};
 
+	//makes sure that user has entered the page with the mouse a certain distance to avoid popping up the mailchimp subscribe feature prematurely
+	function showSubScribeOnExit () {
+		var mouseTriggerSet = beforeExit.mouseHasEntered;
+		//make sure mouse has entered page, so as to not show popup when mouse enters
+		if(event.clientY > 20 && mouseTriggerSet === false) {
+			beforeExit.mouseHasEntered = true;
+		}
+		//when user moves mouse to address bar show popup
+  		if(event.clientY < 20 && mouseTriggerSet === true) {
+  			beforeExit.showPopup();
+  		}
+	}
+
 	//show and hide privacy statement on subscribe form popup
 	$('#show-hide-privacy').on('click', function() {
 		$('#privacy-statement').slideToggle(400);
@@ -96,6 +115,7 @@ $(document).ready(function() {
 
 	$('.exit-button').on('click', function() {
 		$('.outer-wrapper').show();
+		reloadCarousel();
 		$('.popup').hide();
 	});
 
@@ -120,15 +140,7 @@ $(document).ready(function() {
 
 	//before user exits page 
 	$(window).mousemove(function( event ) {
-		var mouseTriggerSet = beforeExit.mouseHasEntered;
-		//make sure mouse has entered page, so as to not show popup when mouse enters
-		if(event.clientY > 20 && mouseTriggerSet === false) {
-			beforeExit.mouseHasEntered = true;
-		}
-		//when user moves mouse to address bar show popup
-  		if(event.clientY < 20 && mouseTriggerSet === true) {
-  			beforeExit.showPopup();
-  		}
+		showSubScribeOnExit();
 	});
 
 
